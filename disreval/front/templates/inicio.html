@@ -1,0 +1,190 @@
+{% extends "index.html" %}
+{% block bienvenida %}
+{% load static %}
+<section class="row d-flex justify-content-center ">
+
+  <article class="col-8 bg-white pt-0 mb-2 d-flex justify-content-center  mt-4 ">   
+    
+        <div class=" pt-4 mb-5 bg-light pl-4 pr-4 border" >
+
+
+        <h2 class=" text-dark text-center   ">Buscar Productos</h2><hr>
+        <p class="text-center text-secondary" style="">Alimentos, abarrotes, lácteos, productos de limpieza, bebidas, vinos y licores.</p>
+
+        <form action="{%url 'Productos' %}" method="get">
+          <div class="d-flex justify-content-center mt-2">
+            <div class="w-50 input-group md-form form-sm form-2 pb-4 ">
+             <input id="buscar" name="q" class="form-control my-0 py-1 red-border " type="text" placeholder="Nombre o Categoria" aria-label="Search">
+     
+            <button type="button" class="btn btn-dark ml-0">BUSCAR</button>
+      
+           </form>
+
+        
+          </div>
+    </div>
+  
+</div>
+
+<div class="card text-white bg-dark  mb-5 ml-5" style="max-width: 20rem;">
+  <div class="card-header">Ubicación</div>
+  <div class="card-body">
+    <h4 class="card-title">Distribuidora Regional Valdivia Ltda </h4>
+    <p class="card-text">Barros Arana 558, Valdivia 
+Teléfono 56 63 214824.</p>
+  </div>
+</div>
+
+
+
+  </article>
+
+
+    <article class="col-8"> 
+
+<div class="carousel slide  mt-1 mb-5 d-none d-lg-block" id="demo" data-ride="carousel">
+  
+  
+  
+   <!-- INDICADORES-->
+   
+
+    
+    
+    <!-- IMAGENES-->
+     <div class="carousel-inner">
+        
+         
+         <div class="carousel-item active">
+             <img src="{% static 'img/marcas/1.jpg' %}" class="img-fluid">
+             <div class="carousel-caption">     
+            
+             </div>
+         </div>
+     
+     
+     <div class="carousel-item">
+             <img src="{% static 'img/marcas/2.jpg' %}" class="img-fluid">
+             <div class="carousel-caption">     
+             
+             </div>
+         </div>
+         
+         <div class="carousel-item">
+            <img src="{% static 'img/marcas/3.jpg' %}" class="img-fluid">
+            <div class="carousel-caption">     
+            
+            </div>
+        </div>
+         
+         
+     </div>
+   <!-- CONTROLES -->
+     <a href="#demo" class="carousel-control-prev" data-slide="prev"><span><i class="display-4 fas fa-chevron-left text-secondary"></i></span></a>
+     
+     <a href="#demo" class="carousel-control-next" data-slide="next"><span><i class="display-4 fas fa-chevron-right text-secondary "></i></span></a>
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    </div> 
+    </article>
+
+  </section>
+
+  
+
+
+<section class="d-flex justify-content-center mb-5">
+
+
+    <article class="col-8 ">
+    <div class="col-12">
+  <h1 class="display-3 text-danger pb-2 text-center ">Empresa</h1>
+  <p class="lead text-justify  text-center">Contamos más de 40 años de historia en la ciudad de Valdivia, Región de Los Ríos. </p>
+  <hr class="my-4 ">
+  <p class="text-justify text-secondary">Disreval es una empresa líder en comercialización y distribución de alimentos, abarrotes, lácteos, productos de limpieza, bebidas, vinos y licores al por mayor y detalle para el sector público y privado.</p>
+  <p class="lead d-flex justify-content-center">
+    <a class="btn btn-dark btn-lg" href="#" role="button">Leer más</a>
+  </p>
+</div>
+<div class="d-flex justify-content-center">
+    <div class=" col-8">
+     <img src="{% static 'img/logos/logochico.png' %}" class="ml-lg-0 pt-5 img-fluid">
+     </div>
+  </div>
+  </article>
+
+  
+</section>
+
+<section class="d-flex justify-content-center mt-5">
+  <article class="col-8 ">
+<div class="alert alert-dismissible alert-secondary">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Horario de atención al cliente:</strong>  Lunes a viernes de 08:30 a 13:00 hrs y 15:00 a 19:30 hrs.
+</div>
+    </article>
+
+  
+</section>
+
+
+<section class="d-flex justify-content-center mt-5">
+    <article class="col-8 ">
+    <div class="col-12">
+  <h1 class="display-3 text-danger text-center">Capital</h1>
+  <p class="lead text-justify  text-center">Contamos con un gran capital humano.</p>
+  <hr class="my-4 ">
+  <p class="text-justify text-secondary">Especialistas en las áreas de Comercial, Logística, Administración, Finanzas y Gestión, que permite asegurar a nuestros proveedores el poder llegar a su mercado objetivo y con nuestros clientes generar la integración en su cadena de valor para brindarles una atención personalizada, satisfacer sus necesidades y entregar respuestas inmediatas a sus requerimientos de abastecimiento con nuestros productos.</p>
+  <p class="lead d-flex justify-content-center">
+    <a class="btn btn-dark btn-lg" href="#" role="button">Leer más</a>
+  </p>
+</div>
+<div class="d-flex justify-content-center">
+    <div class=" col-5">
+     <img src="{% static 'img/empresa/capital.jpg' %}" style=" border-radius:1%;" class="ml-lg-0 pt-5 img-fluid">
+     </div>
+  </div>
+  </article>
+
+  
+</section>
+                
+                
+  
+
+
+
+         
+   
+      
+                  
+
+
+     
+
+
+
+
+     
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        
+{% endblock %}

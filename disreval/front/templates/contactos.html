@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% block contactos %}
+{% load static %}
+
+
+
+<section class="row d-flex justify-content-center mt-4">
+ <article class="col-8 mt-0">
+   <h1 class="text-center display-3">Contactos Disreval</h1>
+ </article>
+<article class="col-8">
+<div class="col-12 mt-2" id="contactsList">
+
+  <!--
+    
+    <table class="table  table-hover  table-striped">
+        <tr >
+            <td>CARGO</td>
+            <td>NOMBRE</td>
+            <td>CORREO</td>
+            <td>NUMERO</td>
+        </tr>
+   
+{% for contact in contacts %}
+        <tr>    
+       
+        <td>{{ contact.role}}</td>
+        <td>{{ contact.name|add:" "|add:contact.last_name  }}</td>
+        <td>{{ contact.email }}</td>
+        <td> {{ contact.phone }}</td>
+      </tr>
+      {% endfor %}
+
+ </table>
+</div>
+{% if contacts.has_other_pages %}
+<div class="pagination d-flex justify-content-center">
+   
+      {% if contacts.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ contacts.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+      {% else %}
+             <span><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-left"></i></a></li></span> 
+   
+      {% endif %}
+      {% for i in contacts.paginator.page_range %}
+        {% if contacts.number == i %}
+        <span><li class="page-item"><a class="page-link disabled" > {{ i }} </a></li></span> 
+   
+        
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+         
+        {% endif %}
+      {% endfor %}
+      {% if contacts.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ contacts.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+      {% else %}
+         <span><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-right"></i></a></li></span> 
+     
+      {% endif %}
+      
+   
+  {% endif %}-->
+  </div>
+  </article>
+</section>
+
+{% endblock %}
