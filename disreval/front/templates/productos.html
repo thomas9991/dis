@@ -3,120 +3,138 @@
 {% load static %}
 {% load humanize %}
 {% load l10n %}
-<div class="row mt-4 mb-5 " >
-  <div class="col   pt-2 pb-2 d-flex justify-content-center align-items-center">
-      <h1 class="  text-dark text-center " style="letter-spacing: 1px;"> <span>PRODUCTOS </span></h1>
-      <form action="{%url 'Productos' %}" method="get">
-      <div class=" input-group md-form form-sm form-2 ml-5 ">
-        <input id="buscar" name="q" class="form-control my-0 py-1  " type="text" placeholder="Nombre o Categoria" aria-label="Search">
-         <button type="submit" class="btn btn-white text-white ml-2 ">BUSCAR</button>
-         </form>
-       </div>
-  </div>
-</div>
+<section class="row d-flex justify-content-center ">
 
-
-<div class="row ml-5 mr-5 d-flex justify-content-center">
-
-          <div class="col-9 d-flex flex-wrap">
-    {% for dep  in department_list %}
+      <article class="col-sm-12 col-md-8 bg-white pt-0 mb-0 d-flex justify-content-center  mt-4 ">   
         
-            <form action="{%url 'Productos' %}" method="get" class=" ">
-            <input id="buscar" name="q" class="d-none form-control my-0 py-1 red-border " value="{{  dep.department_name.lower }}" type="text" placeholder="Producto o Categoria" aria-label="Search">
-   
-           
-      <button type="submit" class="btn btn-info text-light mb-1 ml-1">{{ dep.department_name.lower }}</button>
+            <div class=" pt-4 mb-5 bg-white pl-4 pr-4 " >
+
+
+            <h1 class="display-3 text-dark text-center   ">Buscar Productos</h1><hr>
+            <p class="text-center text-dark" >Alimentos, abarrotes, lácteos, productos de limpieza, bebidas, vinos y licores.</p>
+
+            <form action="{%url 'Productos' %}" method="get">
+              <div class="d-flex justify-content-center mt-2">
+                <div class="w-50 input-group md-form form-sm form-2 pb-0 ">
+                <input id="buscar" name="q" class="form-control my-0 py-1 red-border " type="text" placeholder="Nombre o Categoria" aria-label="Search">
+        
+                <button type="submit" class="btn btn-dark ml-0">BUSCAR</button>
           
-   </form> 
-          
-            {% endfor %}
-          </div>
+              </form>
+
+            
+              </div>
         </div>
+      
+    </div>
+
+  </article>
+
+
+  <article class="col-12 col-md-6 d-flex flex-wrap">
+      {% for dep  in department_list %}
+        
+      <form action="{%url 'Productos' %}" method="get" class=" ">
+      <input id="buscar" name="q" class="d-none form-control my-0 py-1 red-border " value="{{  dep.department_name.lower }}" type="text" placeholder="Producto o Categoria" aria-label="Search">
+
+     
+<button type="submit"  class="btn btn-light  mb-1 ml-1 text-dark">{{ dep.department_name.lower }}</button>
+    
+</form> 
+    
+      {% endfor %}
+  </article>
+</section>
+
+
+<section class="row d-flex justify-content-center">
+  <article class="col-sm-12 col-md-8 d-flex flex-wrap">
+      {% for product in products %}
+      <div class="col-md-2 bg-white mt-5 ml-5 mr-5 text-left">
+          <span style="font-weight:lighter ;font-size:17px" class="text-dark" > {{product.name}}</span><br>
+          <span class="text-danger bg-info" style="font-size:16px;"><h4 style="font-weight:lighter">${{product.getPrice }}</h4></span>
+          {% if product.offer_price > 0  %}
+          <span class="text-primary " style="font-size:30px;font-weight:lighter">OFERTA: ${{product.offer_price}}</span>
+          {% endif %}
+          <h6 class="text-info small" style="letter-spacing: 1px;">{{product.department}}</h6>
+      </div> 
+          {% endfor %}
+         
+  </article>
+
+
+
+  <article class="col-8 d-flex justify-content-center">
+      {% if query %}
+      {% if products.has_other_pages %}
+      <div class="  pagination d-flex justify-content-center  flex-wrap">
+    
+          {% if products.has_previous %}
+          <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ products.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+          {% else %}
+                 <span><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-left"></i></a></li></span> 
        
- 
-
-
-
-
-
-<div class="row ml-5 mr-5 mt-0 d-flex justify-content-center mt-2  bg-white text-dark" id="productList">
-{% for product in products %}
- <div class="col-2 bg-white mt-5 ml-5 mr-5 text-left">
-  <span style="font-weight:lighter ;font-size:17px" class="text-dark" > {{product.name}}</span><br>
-
-  <span class="text-danger bg-info" style="font-size:16px;"><h4 style="font-weight:lighter">${{product.getPrice }}</h4></span>
-
-  {% if product.offer_price > 0  %}
-  <span class="text-primary " style="font-size:30px;font-weight:lighter">OFERTA: ${{product.offer_price}}</span>
-  {% endif %}
+          {% endif %}
+          {% for i in products.paginator.page_range %}
+            {% if products.number == i %}
+            <span><a class="page-link disabled" > {{ i }} </a></li></span> 
+       
+            
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ i }}">{{ i }}</a></li>
+             
+            {% endif %}
+          {% endfor %}
+          {% if products.has_next %}
+            <li class="page-item" ><a class="page-link" href="?q={{ query }}&page={{products.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+          {% else %}
+             <span ><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-right"></i></a></li></span> 
+         
+          {% endif %}
+   
+          {% endif %}
+          {% else %}
+          {% if products.has_other_pages %}
+    <div class=" col-11 pagination d-flex justify-content-center  flex-wrap mt-5">
+       
+          {% if products.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+          {% else %}
+                 <span><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-left"></i></a></li></span> 
+       
+          {% endif %}
+          {% for i in products.paginator.page_range %}
+            {% if products.number == i %}
+            <span><a class="page-link disabled" > {{ i }} </a></li></span> 
+       
+            
+            {% else %}
+            <li class="page-item "><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+             
+            {% endif %}
+          {% endfor %}
+          {% if products.has_next %}
+            <li class="page-item" ><a class="page-link" href="?page={{products.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+          {% else %}
+             <span ><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-right"></i></a></li></span> 
+         
+          {% endif %}
+   
+          {% endif %}
+       
+      {% endif %}
   
-  <h6 class="text-info small" style="letter-spacing: 1px;">{{product.department}}</h6>
- </div> 
- {% endfor %}
 
-</div>
+  </article>
+</section>
 
-<div class="row d-flex justify-content-center mt-5">
-  {% if query %}
-  {% if products.has_other_pages %}
- <div class=" col-10 pagination d-flex justify-content-center  flex-wrap">
-    
-       {% if products.has_previous %}
-       <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ products.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
-       {% else %}
-              <span><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-left"></i></a></li></span> 
-    
-       {% endif %}
-       {% for i in products.paginator.page_range %}
-         {% if products.number == i %}
-         <span><a class="page-link disabled" > {{ i }} </a></li></span> 
-    
-         
-         {% else %}
-         <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ i }}">{{ i }}</a></li>
-          
-         {% endif %}
-       {% endfor %}
-       {% if products.has_next %}
-         <li class="page-item" ><a class="page-link" href="?q={{ query }}&page={{products.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
-       {% else %}
-          <span ><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-right"></i></a></li></span> 
-      
-       {% endif %}
 
-       {% endif %}
-       {% else %}
-       {% if products.has_other_pages %}
- <div class=" col-10 pagination d-flex justify-content-center  flex-wrap">
-    
-       {% if products.has_previous %}
-       <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
-       {% else %}
-              <span><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-left"></i></a></li></span> 
-    
-       {% endif %}
-       {% for i in products.paginator.page_range %}
-         {% if products.number == i %}
-         <span><a class="page-link disabled" > {{ i }} </a></li></span> 
-    
-         
-         {% else %}
-         <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-          
-         {% endif %}
-       {% endfor %}
-       {% if products.has_next %}
-         <li class="page-item" ><a class="page-link" href="?page={{products.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
-       {% else %}
-          <span ><li class="page-item"><a class="page-link disabled" ><i class="fas fa-chevron-right"></i></a></li></span> 
-      
-       {% endif %}
 
-       {% endif %}
-    
-   {% endif %}
- </div>
-</div>
+
+
+
+
+
 
 
 {% endblock %}

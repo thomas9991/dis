@@ -3,13 +3,13 @@
 {% load static %}
 <section class="row d-flex justify-content-center ">
 
-  <article class="col-8 bg-white pt-0 mb-2 d-flex justify-content-center  mt-4 ">   
+  <article class="col-sm-12 col-md-6 bg-white pt-0 mb-2 d-flex flex-wrap justify-content-center  mt-4 ">   
     
-        <div class=" pt-4 mb-5 bg-light pl-4 pr-4 border" >
+        <div class="col-sm-12 col-md pt-4 mb-5 bg-light border" >
 
 
         <h2 class=" text-dark text-center   ">Buscar Productos</h2><hr>
-        <p class="text-center text-secondary" style="">Alimentos, abarrotes, lácteos, productos de limpieza, bebidas, vinos y licores.</p>
+        <p class="text-center text-secondary" >Alimentos, abarrotes, lácteos, productos de limpieza, bebidas, vinos y licores.</p>
 
         <form action="{%url 'Productos' %}" method="get">
           <div class="d-flex justify-content-center mt-2">
@@ -26,7 +26,7 @@
   
 </div>
 
-<div class="card text-white bg-dark  mb-5 ml-5" style="max-width: 20rem;">
+<div class="card text-white bg-dark  mb-md-5 ml-md-5" style="max-width: 20rem;">
   <div class="card-header">Ubicación</div>
   <div class="card-body">
     <h4 class="card-title">Distribuidora Regional Valdivia Ltda </h4>
@@ -103,7 +103,7 @@ Teléfono 56 63 214824.</p>
 <section class="d-flex justify-content-center mb-5">
 
 
-    <article class="col-8 ">
+    <article class=" col-sm-12 col-md-8 ">
     <div class="col-12">
   <h1 class="display-3 text-danger pb-2 text-center ">Empresa</h1>
   <p class="lead text-justify  text-center">Contamos más de 40 años de historia en la ciudad de Valdivia, Región de Los Ríos. </p>
@@ -114,7 +114,7 @@ Teléfono 56 63 214824.</p>
   </p>
 </div>
 <div class="d-flex justify-content-center">
-    <div class=" col-8">
+    <div class=" col-sm-12 col-md-8">
      <img src="{% static 'img/logos/logochico.png' %}" class="ml-lg-0 pt-5 img-fluid">
      </div>
   </div>
@@ -124,7 +124,7 @@ Teléfono 56 63 214824.</p>
 </section>
 
 <section class="d-flex justify-content-center mt-5">
-  <article class="col-8 ">
+  <article class="col-sm-12 col-md-8 ">
 <div class="alert alert-dismissible alert-secondary">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Horario de atención al cliente:</strong>  Lunes a viernes de 08:30 a 13:00 hrs y 15:00 a 19:30 hrs.
@@ -136,9 +136,9 @@ Teléfono 56 63 214824.</p>
 
 
 <section class="d-flex justify-content-center mt-5">
-    <article class="col-8 ">
+    <article class="col-sm-12 col-md-8 ">
     <div class="col-12">
-  <h1 class="display-3 text-danger text-center">Capital</h1>
+  <h1 class="display-3 text-danger text-center " >Capital</h1>
   <p class="lead text-justify  text-center">Contamos con un gran capital humano.</p>
   <hr class="my-4 ">
   <p class="text-justify text-secondary">Especialistas en las áreas de Comercial, Logística, Administración, Finanzas y Gestión, que permite asegurar a nuestros proveedores el poder llegar a su mercado objetivo y con nuestros clientes generar la integración en su cadena de valor para brindarles una atención personalizada, satisfacer sus necesidades y entregar respuestas inmediatas a sus requerimientos de abastecimiento con nuestros productos.</p>
@@ -147,7 +147,7 @@ Teléfono 56 63 214824.</p>
   </p>
 </div>
 <div class="d-flex justify-content-center">
-    <div class=" col-5">
+    <div class=" col-sm-12 col-md-5">
      <img src="{% static 'img/empresa/capital.jpg' %}" style=" border-radius:1%;" class="ml-lg-0 pt-5 img-fluid">
      </div>
   </div>

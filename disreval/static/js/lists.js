@@ -25,7 +25,7 @@ $(document).ready(function(){
 
           var email = result[i].email.toUpperCase();
           if(result[i].phone){
-          var phone = result[i].phone;
+          var phone = '63-'+result[i].phone;
           }
           else{
         var phone = ' ';
